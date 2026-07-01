@@ -174,3 +174,6 @@ npm warn Unknown env config "devdir". This will stop working in the next major v
  ○ Compiling /api/admin/products ...
  ✓ Compiled /api/admin/products in 1440ms (490 modules)
  POST /api/admin/products 200 in 1707ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 6.6s (1495 modules)
+ ✓ Compiled in 365ms (739 modules)

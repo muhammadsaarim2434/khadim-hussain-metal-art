@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import { isMailConfigured, sendContactEmails } from '@/lib/mailer';
+
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {
@@ -8,21 +11,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    // Optional: forward to a webhook (e.g. Formspree/Zapier) if configured.
-    const webhook = process.env.CONTACT_WEBHOOK;
-    if (webhook) {
-      await fetch(webhook, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+    if (isMailConfigured()) {
+      await sendContactEmails(data);
     } else {
-      // No webhook configured — log for now. Wire up email/CRM here.
-      console.log('New contact enquiry:', data);
+      // Optional: forward to a webhook (e.g. Formspree/Zapier) if configured.
+      const webhook = process.env.CONTACT_WEBHOOK;
+      if (webhook) {
+        await fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      } else {
+        // No mailer/webhook configured — log so the form still works in dev.
+        console.log('New contact enquiry (mailer not configured):', data);
+      }
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+  } catch (err) {
+    console.error('Contact form error:', err);
+    return NextResponse.json({ error: 'Failed to send message' }, { status: 500 });
   }
 }
