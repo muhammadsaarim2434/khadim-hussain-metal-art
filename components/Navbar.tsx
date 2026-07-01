@@ -68,7 +68,7 @@ export default function Navbar() {
         <div className="container-x flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src={company.logo}
+              src={company.logoLight}
               alt={`${company.name} logo`}
               width={140}
               height={56}
