@@ -1,0 +1,170 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> khadim-hussain-metal-art@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3009
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1828ms
+ ✓ Compiled /api/seed in 380ms (63 modules)
+ POST /api/seed 200 in 3764ms
+ ✓ Compiled /api/auth/login in 305ms (129 modules)
+ POST /api/auth/login 200 in 740ms
+ ✓ Compiled /api/admin/stats in 78ms (132 modules)
+ GET /api/admin/stats 200 in 758ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 516ms (127 modules)
+ ○ Compiling /admin/login ...
+ ✓ Compiled /admin/login in 4.5s (765 modules)
+ GET /admin/login?from=%2Fadmin 200 in 4741ms
+ GET /admin/login?from=%2Fadmin 200 in 195ms
+ ✓ Compiled /api/auth/login in 147ms (465 modules)
+ POST /api/auth/login 200 in 652ms
+ ✓ Compiled /admin in 379ms (853 modules)
+ ✓ Compiled /api/admin/stats in 136ms (474 modules)
+ GET /api/admin/stats 200 in 324ms
+ GET /api/admin/stats 200 in 86ms
+ ✓ Compiled /admin/products in 295ms (860 modules)
+ ✓ Compiled /api/admin/products in 240ms (491 modules)
+ GET /api/admin/products 200 in 521ms
+ GET /api/admin/products 200 in 144ms
+ ○ Compiling /admin/products/[id]/edit ...
+ ✓ Compiled /admin/products/[id]/edit in 641ms (883 modules)
+ ✓ Compiled /api/admin/products/[id] in 135ms (502 modules)
+ GET /api/admin/products/6a44f335044e47f61301f16e 200 in 944ms
+ GET /api/admin/products/6a44f335044e47f61301f16e 200 in 77ms
+ ✓ Compiled /api/admin/subcategories in 145ms (504 modules)
+ ✓ Compiled (506 modules)
+ GET /api/admin/categories 200 in 446ms
+ GET /api/admin/subcategories 200 in 409ms
+ ✓ Compiled /api/admin/regions in 153ms (508 modules)
+ GET /api/admin/subcategories 200 in 295ms
+ GET /api/admin/categories 200 in 383ms
+ GET /api/admin/regions 200 in 384ms
+ GET /api/admin/regions 200 in 73ms
+(node:2894) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PUT /api/admin/products/6a44f335044e47f61301f16e 200 in 102ms
+ GET /api/admin/products 200 in 225ms
+ GET /api/admin/products 200 in 153ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1946ms (1654 modules)
+ GET / 200 in 2197ms
+ GET / 200 in 204ms
+ ○ Compiling /shop ...
+ ✓ Compiled /shop in 724ms (1679 modules)
+ GET /api/admin/products/6a44f335044e47f61301f16c 200 in 113ms
+ GET /api/admin/products/6a44f335044e47f61301f16c 200 in 123ms
+ GET /api/admin/subcategories 200 in 181ms
+ GET /api/admin/categories 200 in 183ms
+ GET /api/admin/regions 200 in 182ms
+ GET /api/admin/subcategories 200 in 82ms
+ GET /api/admin/regions 200 in 82ms
+ GET /api/admin/categories 200 in 85ms
+ ✓ Compiled /admin/categories in 365ms (1677 modules)
+ GET /api/admin/categories 200 in 95ms
+ GET /api/admin/categories 200 in 91ms
+ ✓ Compiled /admin/settings in 319ms (1684 modules)
+ ✓ Compiled /api/seed in 145ms (925 modules)
+ POST /api/seed 200 in 557ms
+ ✓ Compiled /admin/orders in 352ms (1700 modules)
+ ✓ Compiled /api/admin/orders in 151ms (934 modules)
+ GET /api/admin/orders 200 in 283ms
+ GET /api/admin/orders 200 in 131ms
+ ✓ Compiled /products/[slug] in 467ms (1717 modules)
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 532ms (1754 modules)
+ ✓ Compiled /admin/banners in 332ms (1713 modules)
+ GET /admin/banners 200 in 512ms
+ ✓ Compiled /api/admin/banners in 170ms (927 modules)
+ GET /api/admin/banners 200 in 311ms
+ GET /api/admin/banners 200 in 84ms
+ ✓ Compiled /api/admin/banners/[id] in 163ms (917 modules)
+ PUT /api/admin/banners/6a44f335044e47f61301f172 200 in 899ms
+ GET /api/admin/banners 200 in 120ms
+ ✓ Compiled / in 127ms (939 modules)
+ GET / 200 in 177ms
+ GET /admin/banners 200 in 25ms
+ GET /api/admin/banners 200 in 148ms
+ GET /api/admin/banners 200 in 102ms
+ PUT /api/admin/banners/6a44f335044e47f61301f172 200 in 86ms
+ GET /api/admin/banners 200 in 78ms
+ GET / 200 in 136ms
+ PUT /api/admin/banners/6a44f335044e47f61301f172 200 in 81ms
+ GET /api/admin/banners 200 in 75ms
+ ○ Compiling /admin/regions ...
+ ✓ Compiled /admin/regions in 752ms (1721 modules)
+ ✓ Compiled /api/admin/regions in 270ms (928 modules)
+ GET /api/admin/regions 200 in 425ms
+ GET /api/admin/regions 200 in 125ms
+ ✓ Compiled /admin/subcategories in 281ms (1731 modules)
+ ✓ Compiled /api/admin/categories in 155ms (935 modules)
+ ✓ Compiled (938 modules)
+ GET /api/admin/subcategories 200 in 493ms
+ GET /api/admin/categories 200 in 494ms
+ GET /api/admin/subcategories 200 in 76ms
+ GET /api/admin/categories 200 in 78ms
+ ✓ Compiled /admin/categories in 211ms (943 modules)
+ GET /api/admin/categories 200 in 79ms
+ GET /api/admin/categories 200 in 72ms
+ ✓ Compiled /api/admin/categories/[id] in 195ms (939 modules)
+ PUT /api/admin/categories/6a44f334044e47f61301f168 200 in 1021ms
+ GET /api/admin/categories 200 in 76ms
+ ✓ Compiled /categories in 467ms (1741 modules)
+ POST /api/admin/categories 200 in 322ms
+ GET /api/admin/categories 200 in 72ms
+ PUT /api/admin/categories/6a44f543044e47f61301f173 200 in 134ms
+ GET /api/admin/categories 200 in 73ms
+ GET /categories 200 in 226ms
+ ○ Compiling /shop ...
+ ✓ Compiled /shop in 572ms (923 modules)
+ DELETE /api/admin/categories/6a44f543044e47f61301f173 200 in 293ms
+ GET /api/admin/categories 200 in 76ms
+ ✓ Compiled /admin/products in 153ms (907 modules)
+ ✓ Compiled /api/admin/products in 152ms (910 modules)
+ GET /api/admin/products 200 in 418ms
+ GET /api/admin/products 200 in 148ms
+ ✓ Compiled /admin/products/new in 454ms (1721 modules)
+ ✓ Compiled /api/admin/regions in 168ms (921 modules)
+ ✓ Compiled (923 modules)
+ GET /api/admin/regions 200 in 423ms
+ GET /api/admin/categories 200 in 429ms
+ GET /api/admin/subcategories 200 in 429ms
+ GET /api/admin/regions 200 in 90ms
+ GET /api/admin/subcategories 200 in 85ms
+ GET /api/admin/categories 200 in 86ms
+ POST /api/admin/products 200 in 163ms
+ GET /api/admin/products 200 in 142ms
+ GET /api/admin/products 200 in 192ms
+ GET /categories 200 in 178ms
+ ✓ Compiled /products/[slug] in 327ms (913 modules)
+ ✓ Compiled /api/admin/products/[id] in 154ms (899 modules)
+ DELETE /api/admin/products/6a44f5a6044e47f61301f174 200 in 370ms
+ ✓ Compiled /api/admin/products in 149ms (901 modules)
+ GET /api/admin/products 200 in 331ms
+ ✓ Compiled /admin in 113ms (906 modules)
+ ✓ Compiled /api/admin/stats in 221ms (908 modules)
+ GET /api/admin/stats 200 in 320ms
+ GET /api/admin/stats 200 in 76ms
+ ✓ Compiled /admin/banners in 147ms (908 modules)
+ GET /admin/banners 200 in 295ms
+ ✓ Compiled /api/admin/banners in 137ms (910 modules)
+ GET /api/admin/banners 200 in 236ms
+ GET /api/admin/banners 200 in 89ms
+ GET /api/admin/stats 200 in 87ms
+ GET /api/admin/stats 200 in 217ms
+ ✓ Compiled / in 182ms (917 modules)
+ GET / 200 in 383ms
+ GET / 200 in 195ms
+ ✓ Compiled in 259ms (808 modules)
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3009
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/turing/Documents/OS World Task/khma-next/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/turing/Documents/OS World Task/khma-next/.next/cache/webpack/client-development/0.pack.gz'

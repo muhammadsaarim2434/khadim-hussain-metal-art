@@ -7,24 +7,22 @@ import { Badge } from '@/components/ui/badge';
 import ProductGallery from '@/components/ProductGallery';
 import ProductCard from '@/components/ProductCard';
 import Reveal from '@/components/Reveal';
+import { company } from '@/lib/data';
 import {
-  products,
-  getProduct,
-  getCategory,
-  productsByCategory,
-  company,
-} from '@/lib/data';
+  getProducts,
+  getProductBySlug,
+  getCategoryBySlug,
+  getProductsByCategory,
+} from '@/lib/repo';
 
-export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = 'force-dynamic';
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
-  const product = getProduct(params.slug);
+}): Promise<Metadata> {
+  const product = await getProductBySlug(params.slug);
   if (!product) return { title: 'Product Not Found' };
   return {
     title: `${product.title} – Custom Metal Art`,
@@ -33,15 +31,17 @@ export function generateMetadata({
   };
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = getProduct(params.slug);
+export default async function ProductPage({ params }: { params: { slug: string } }) {
+  const product = await getProductBySlug(params.slug);
   if (!product) notFound();
 
-  const category = getCategory(product.category);
-  const related = productsByCategory(product.category)
-    .filter((p) => p.id !== product.id)
-    .slice(0, 3);
-  const fallback = products.filter((p) => p.id !== product.id).slice(0, 3);
+  const category = await getCategoryBySlug(product.category);
+  const [inCategory, allProducts] = await Promise.all([
+    getProductsByCategory(product.category),
+    getProducts(),
+  ]);
+  const related = inCategory.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const fallback = allProducts.filter((p) => p.slug !== product.slug).slice(0, 3);
   const relatedList = related.length ? related : fallback;
 
   return (

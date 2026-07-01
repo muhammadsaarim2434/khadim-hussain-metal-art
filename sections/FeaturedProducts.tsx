@@ -1,10 +1,11 @@
 import Reveal from '@/components/Reveal';
 import ProductCard from '@/components/ProductCard';
-import { products } from '@/lib/data';
+import { products as staticProducts, type Product } from '@/lib/data';
 
-export default function FeaturedProducts() {
-  const featured = products.filter((p) => p.featured).slice(0, 4);
-  const list = featured.length ? featured : products.slice(0, 4);
+export default function FeaturedProducts({ products }: { products?: Product[] }) {
+  const source = products ?? staticProducts;
+  const featured = source.filter((p) => p.featured).slice(0, 4);
+  const list = featured.length ? featured : source.slice(0, 4);
 
   return (
     <section className="bg-muted/50 py-20 md:py-28">

@@ -7,8 +7,16 @@ import FeaturedProducts from '@/sections/FeaturedProducts';
 import CtaBanner from '@/sections/CtaBanner';
 import LatestProducts from '@/sections/LatestProducts';
 import StatsBar from '@/sections/StatsBar';
+import { getProducts, getCategories } from '@/lib/repo';
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
+  const [products, categories] = await Promise.all([
+    getProducts(),
+    getCategories(),
+  ]);
+
   return (
     <>
       <Hero />
@@ -23,11 +31,11 @@ export default function HomePage() {
         ]}
       />
       <AboutIntro />
-      <CategoriesSection />
+      <CategoriesSection categories={categories} />
       <WhyChoose />
-      <FeaturedProducts />
+      <FeaturedProducts products={products} />
       <CtaBanner />
-      <LatestProducts />
+      <LatestProducts products={products} />
       <StatsBar />
     </>
   );

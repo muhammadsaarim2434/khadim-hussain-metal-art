@@ -3,10 +3,11 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import ProductCard from '@/components/ProductCard';
-import { products } from '@/lib/data';
+import { products as staticProducts, type Product } from '@/lib/data';
 
-export default function LatestProducts() {
-  const latest = [...products].slice(-6).reverse();
+export default function LatestProducts({ products }: { products?: Product[] }) {
+  const source = products ?? staticProducts;
+  const latest = source.slice(0, 6);
 
   return (
     <section className="py-20 md:py-28">

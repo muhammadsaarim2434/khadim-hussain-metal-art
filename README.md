@@ -21,6 +21,42 @@ A modern, redesigned website for **Khadim Hussain Metal Art** (Aluminum & Metal 
 | `/products/[slug]` | Product detail with gallery, specs, quote CTA, related products |
 | `/contact` | Contact info, form, map, FAQ |
 | `/privacy`, `/terms` | Legal pages |
+| `/admin` | **Admin panel** — dashboard, products, categories, sub-categories, regions, banners, orders |
+
+## Admin Panel & Database
+
+The full PHP admin panel is rebuilt inside this project under `/admin`, backed by
+**MongoDB Atlas** (via Mongoose) with cookie/JWT authentication.
+
+### Features
+- Secure login (JWT httpOnly cookie) + route protection via `middleware.ts`
+- Dashboard with live counts and recent orders
+- CRUD for **Products** (multiple images, size/price variants, features, feature/sale flags, discount/tax, slug), **Categories**, **Sub-categories**, **Regions**, **Banners**
+- **Orders**: view details, mark paid/unpaid, delete
+- Change password + one-click **Seed** (imports the starter catalog)
+- The public storefront reads live from MongoDB, with an automatic fallback to the
+  static content in `lib/data.ts` when no database is configured.
+
+### Setup
+1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/atlas).
+2. Copy `.env.example` to `.env.local` and fill in `MONGODB_URI` and `AUTH_SECRET`.
+3. Start the app, then seed the database:
+   - open `/admin` → you'll be sent to `/admin/login`
+   - after seeding you can log in with the default admin (below)
+   - to seed: `POST /api/seed` (or use the **Seed / Import Data** button on `/admin/settings`)
+4. Default admin: **admin@khma.com / admin123** (change it in Settings, or override
+   via `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`).
+
+> **Why MongoDB (not SQL)?** Zero server management, a free hosted tier, one-line
+> Vercel setup, and a flexible schema that lets a product's images and size/price
+> variants live inside a single document (SQL needed 3 separate tables). SQL is a
+> fine alternative but is more setup for no real gain on this catalog.
+
+### Image uploads
+Uploads are saved to `public/uploads/...` (same approach as the original PHP `uploads/`
+folder) — works in local dev and on any Node server / VPS. **On Vercel** the serverless
+filesystem is not persistent, so for Vercel switch `lib/upload.ts` to Cloudinary or
+Vercel Blob (the rest of the code stays the same).
 
 ## Content & Data
 

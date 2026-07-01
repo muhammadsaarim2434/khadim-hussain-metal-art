@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import Reveal from '@/components/Reveal';
 import CategoryCard from '@/components/CategoryCard';
-import { categories } from '@/lib/data';
+import { getCategories } from '@/lib/repo';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Product Categories – Metal Art & Aluminum',
@@ -10,7 +12,8 @@ export const metadata: Metadata = {
     'Browse all Khadim Hussain Metal Art product categories — main gates, railings, doors, aluminum furniture, grills, windows and decorative metal art.',
 };
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  const categories = await getCategories();
   return (
     <>
       <PageHeader

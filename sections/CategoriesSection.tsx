@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import CategoryCard from '@/components/CategoryCard';
-import { categories } from '@/lib/data';
+import { categories as staticCategories, type Category } from '@/lib/data';
 
-export default function CategoriesSection() {
+export default function CategoriesSection({ categories = staticCategories }: { categories?: Category[] }) {
   return (
     <section className="bg-muted/50 py-20 md:py-28">
       <div className="container-x">

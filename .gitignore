@@ -25,6 +25,10 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# admin uploaded media (keep the folder, ignore contents)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
 # vercel
 .vercel
 

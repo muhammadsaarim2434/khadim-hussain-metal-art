@@ -5,12 +5,21 @@ import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import ProductCard from '@/components/ProductCard';
 import { cn } from '@/lib/utils';
-import { products, categories } from '@/lib/data';
+import {
+  products as staticProducts,
+  categories as staticCategories,
+  type Product,
+  type Category,
+} from '@/lib/data';
 
 export default function ShopClient({
   initialCategory = 'all',
+  products = staticProducts,
+  categories = staticCategories,
 }: {
   initialCategory?: string;
+  products?: Product[];
+  categories?: Category[];
 }) {
   const [active, setActive] = useState(initialCategory);
   const [query, setQuery] = useState('');
@@ -24,7 +33,7 @@ export default function ShopClient({
         p.description.toLowerCase().includes(query.toLowerCase());
       return inCat && inSearch;
     });
-  }, [active, query]);
+  }, [active, query, products]);
 
   const tabs = [{ slug: 'all', title: 'All' }, ...categories];
 
