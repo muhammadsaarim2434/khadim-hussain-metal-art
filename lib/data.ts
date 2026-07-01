@@ -5,8 +5,8 @@ export const company = {
   heroHeading: 'Your Vision, Our Metal Expertise',
   heroSub:
     'Custom-crafted gates, railings, grills, outdoor furniture and decorative metal art — built to last, designed to impress.',
-  phone: '+923229745480',
-  phoneDisplay: '+92 322 9745480',
+  phone: '+923028070443',
+  phoneDisplay: '+92 302 8070443',
   email: 'infokhma@gmail.com',
   address: 'Madar-e-Millat Road, Lahore, Punjab, Pakistan',
   hours: '8:00am – 8:00pm, Monday – Saturday',
@@ -14,7 +14,7 @@ export const company = {
   logoLight: '/images/logo/logo-light.png',
   instagram: '#',
   youtube: '#',
-  whatsapp: 'https://wa.me/923229745480',
+  whatsapp: 'https://wa.me/923028070443',
 };
 
 export type Category = {
