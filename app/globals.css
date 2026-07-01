@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 24 20% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 20% 8%;
+
+    --primary: 42 87% 47%;
+    --primary-foreground: 24 40% 10%;
+
+    --secondary: 20 58% 34%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 24 8% 42%;
+
+    --accent: 42 87% 47%;
+    --accent-foreground: 24 40% 10%;
+
+    --border: 30 18% 88%;
+    --input: 30 18% 86%;
+    --ring: 42 87% 47%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .container-x {
+    @apply mx-auto w-full max-w-[1240px] px-5 md:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-brown;
+  }
+
+  .gold-text {
+    @apply text-gold-600;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full;
+  }
+
+  /* subtle metallic sheen for dark panels */
+  .metal-dark {
+    background:
+      radial-gradient(120% 120% at 0% 0%, #2a221c 0%, transparent 55%),
+      radial-gradient(120% 120% at 100% 100%, #22190f 0%, transparent 55%),
+      #171310;
+  }
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #efe7db;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbb487;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E0A50F;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
