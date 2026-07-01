@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Plus, Pencil, Trash2, Loader2, FolderTree } from 'lucide-react';
 import Modal from '@/components/admin/Modal';
+import { compressImage } from '@/lib/image-compress';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Cat = any;
@@ -65,8 +66,8 @@ export default function CategoriesPage() {
     const fd = new FormData();
     fd.append('title', title);
     fd.append('description', description);
-    if (image) fd.append('image', image);
-    if (longImage) fd.append('longImage', longImage);
+    if (image) fd.append('image', await compressImage(image));
+    if (longImage) fd.append('longImage', await compressImage(longImage));
 
     const url = editing ? `/api/admin/categories/${editing._id}` : '/api/admin/categories';
     const res = await fetch(url, { method: editing ? 'PUT' : 'POST', body: fd });

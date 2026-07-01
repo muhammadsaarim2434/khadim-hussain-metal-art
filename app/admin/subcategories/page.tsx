@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Plus, Pencil, Trash2, Loader2, Layers } from 'lucide-react';
 import Modal from '@/components/admin/Modal';
+import { compressImage } from '@/lib/image-compress';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Sub = any;
@@ -67,7 +68,7 @@ export default function SubCategoriesPage() {
     const fd = new FormData();
     fd.append('title', title);
     fd.append('categoryId', categoryId);
-    if (image) fd.append('image', image);
+    if (image) fd.append('image', await compressImage(image));
     const url = editing ? `/api/admin/subcategories/${editing._id}` : '/api/admin/subcategories';
     const res = await fetch(url, { method: editing ? 'PUT' : 'POST', body: fd });
     setSaving(false);

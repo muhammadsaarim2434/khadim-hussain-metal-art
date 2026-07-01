@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Loader2, Plus, Trash2, X, ImagePlus } from 'lucide-react';
+import { compressImages } from '@/lib/image-compress';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Opt = any;
@@ -97,13 +98,19 @@ export default function ProductForm({
     fd.append('features', JSON.stringify(features.map((f) => f.trim()).filter(Boolean)));
     fd.append('sizes', JSON.stringify(sizes));
     fd.append('existingImages', JSON.stringify(existingImages));
-    newFiles.forEach((f) => fd.append('images', f));
+    const compressed = await compressImages(newFiles);
+    compressed.forEach((f) => fd.append('images', f));
 
     const url = productId ? `/api/admin/products/${productId}` : '/api/admin/products';
     const method = productId ? 'PUT' : 'POST';
     const res = await fetch(url, { method, body: fd });
 
     if (!res.ok) {
+      if (res.status === 413) {
+        setError('Images are too large. Please use fewer or smaller images and try again.');
+        setSaving(false);
+        return;
+      }
       const d = await res.json().catch(() => ({}));
       setError(d.error || 'Failed to save product');
       setSaving(false);

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Plus, Pencil, Trash2, Loader2, Images } from 'lucide-react';
 import Modal from '@/components/admin/Modal';
+import { compressImage } from '@/lib/image-compress';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Banner = any;
@@ -61,7 +62,7 @@ export default function BannersPage() {
     const fd = new FormData();
     fd.append('title', title);
     fd.append('description', description);
-    if (image) fd.append('image', image);
+    if (image) fd.append('image', await compressImage(image));
     const url = editing ? `/api/admin/banners/${editing._id}` : '/api/admin/banners';
     const res = await fetch(url, { method: editing ? 'PUT' : 'POST', body: fd });
     setSaving(false);
