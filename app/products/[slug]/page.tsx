@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Check, Phone, ChevronRight, Home, MessageCircle } from 'lucide-react';
+import { Check, Phone, ChevronRight, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import ProductGallery from '@/components/ProductGallery';
+import WhatsappInquiry from '@/components/WhatsappInquiry';
 import ProductCard from '@/components/ProductCard';
 import Reveal from '@/components/Reveal';
 import { company } from '@/lib/data';
@@ -116,11 +117,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                 <Button asChild>
                   <Link href="/contact">Request a Quote</Link>
                 </Button>
-                <Button asChild variant="secondary">
-                  <a href={company.whatsapp} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="h-4 w-4" /> WhatsApp
-                  </a>
-                </Button>
+                <WhatsappInquiry productTitle={product.title} />
                 <Button asChild variant="outline">
                   <a href={`tel:${company.phone}`}>
                     <Phone className="h-4 w-4" /> Call Us
